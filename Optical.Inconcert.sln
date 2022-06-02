@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32421.90
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Optical.Inconcert.Core", "Optical.Inconcert.Core\Optical.Inconcert.Core.csproj", "{F7AFDABA-7F5E-4770-9D13-F81CC64DD5BB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{860ACD0F-0C10-445B-90BF-EE812563EFA4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Optical.Inconcert.Application", "Optical.Inconcert.Application\Optical.Inconcert.Application.csproj", "{94DBAA1A-0B7C-4264-AB67-BD23778E3121}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Optical.Inconcert.Infrastructure", "Optical.Inconcert.Infrastructure\Optical.Inconcert.Infrastructure.csproj", "{96DA259F-6C8F-48CE-A0DE-E795413947CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Optical.Inconcert.API", "Optical.Inconcert.API\Optical.Inconcert.API.csproj", "{F5ED00C9-11BE-4C60-A1F4-800AAD083A83}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F7AFDABA-7F5E-4770-9D13-F81CC64DD5BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7AFDABA-7F5E-4770-9D13-F81CC64DD5BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7AFDABA-7F5E-4770-9D13-F81CC64DD5BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7AFDABA-7F5E-4770-9D13-F81CC64DD5BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94DBAA1A-0B7C-4264-AB67-BD23778E3121}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94DBAA1A-0B7C-4264-AB67-BD23778E3121}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94DBAA1A-0B7C-4264-AB67-BD23778E3121}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94DBAA1A-0B7C-4264-AB67-BD23778E3121}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96DA259F-6C8F-48CE-A0DE-E795413947CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96DA259F-6C8F-48CE-A0DE-E795413947CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96DA259F-6C8F-48CE-A0DE-E795413947CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96DA259F-6C8F-48CE-A0DE-E795413947CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5ED00C9-11BE-4C60-A1F4-800AAD083A83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5ED00C9-11BE-4C60-A1F4-800AAD083A83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5ED00C9-11BE-4C60-A1F4-800AAD083A83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5ED00C9-11BE-4C60-A1F4-800AAD083A83}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F7AFDABA-7F5E-4770-9D13-F81CC64DD5BB} = {860ACD0F-0C10-445B-90BF-EE812563EFA4}
+		{94DBAA1A-0B7C-4264-AB67-BD23778E3121} = {860ACD0F-0C10-445B-90BF-EE812563EFA4}
+		{96DA259F-6C8F-48CE-A0DE-E795413947CF} = {860ACD0F-0C10-445B-90BF-EE812563EFA4}
+		{F5ED00C9-11BE-4C60-A1F4-800AAD083A83} = {860ACD0F-0C10-445B-90BF-EE812563EFA4}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D9C6E473-A0E1-4F2E-B165-336BC5443BCD}
+	EndGlobalSection
+EndGlobal
