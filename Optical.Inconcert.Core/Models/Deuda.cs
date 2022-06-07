@@ -9,5 +9,9 @@
         public DateTime FecEmision { get; set; }
         public string? DocCliente { get; set; }
         public string? NombreCliente { get; set; }
+        public string? EstadoCliente { get; set; }
+        public string? EstadoServicio { get; set; }
+        public decimal IdContrato { get; set; }
+        public DateTime? FecIniContrato { get; set; }
     }
 }

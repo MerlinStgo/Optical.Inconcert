@@ -3,6 +3,7 @@ using Optical.Inconcert.Application.Interfaces;
 using Optical.Inconcert.Application.Params;
 using Optical.Inconcert.Application.Wrapper;
 using Optical.Inconcert.Core.Models;
+using Optical.Inconcert.Application.DTOs;
 
 namespace Optical.Inconcert.API.Controllers
 {
@@ -20,9 +21,12 @@ namespace Optical.Inconcert.API.Controllers
         }
 
         [HttpGet(Name = "GetDeudaWin")]
+        [Produces("application/json", Type = typeof(ResponseBase<DeudaDto>))]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+
         public async Task<IActionResult> GetDeudaWin(string? codigoCliente, string? documentoCliente)
         {
-            var response = new ResponseBase<IEnumerable<Deuda>>();
+            var response = new ResponseBase<DeudaDto>();
             try
             {
                 response.Success = true;
