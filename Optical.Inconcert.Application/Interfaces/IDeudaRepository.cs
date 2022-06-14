@@ -5,6 +5,6 @@ namespace Optical.Inconcert.Application.Interfaces
 {
     public interface IDeudaRepository
     {
-        Task<IEnumerable<Deuda>> GetDeudas(ParamDeuda param);
+        Task<Deuda> GetDeudas(ParamDeuda param);
     }
 }

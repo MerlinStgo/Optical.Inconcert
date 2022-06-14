@@ -4,6 +4,7 @@ using Optical.Inconcert.Application.Interfaces;
 using Optical.Inconcert.Application.Params;
 using Optical.Inconcert.Core.Models;
 using System.Data;
+using System.Linq;
 
 namespace Optical.Inconcert.Infrastructure.Repositories
 {
@@ -16,9 +17,9 @@ namespace Optical.Inconcert.Infrastructure.Repositories
             _connectionFactory = new ConnectionFactory(configuration);
         }
 
-        public async Task<IEnumerable<Deuda>> GetDeudas(ParamDeuda param)
+        public async Task<Deuda> GetDeudas(ParamDeuda param)
         {
-            var sql = "INCONCERT.LISTAR_RECIBOS_CLIENTE";
+            var sql = "INCONCERT.LISTAR_CLIENTE_RECIBOS_POR_CLIENTE";
 
             var p = new DynamicParameters();
             p.Add("@PEI_ID_EMPRESA", param.IdEmpresa, DbType.Int32);
@@ -28,7 +29,16 @@ namespace Optical.Inconcert.Infrastructure.Repositories
             using (var cn = _connectionFactory.GetConnectionECOM)
             {
                 await cn.OpenAsync();
-                return await cn.QueryAsync<Deuda>(sql, p, commandType: CommandType.StoredProcedure);
+                var result = await cn.QueryMultipleAsync(sql, p, commandType: CommandType.StoredProcedure);
+                
+                var lsServicios = result.Read<Servicio>().ToList();
+                var lsRecibos = result.Read<Recibo>().ToList();
+
+                return new Deuda()
+                {
+                    Servicios = lsServicios,
+                    Recibos = lsRecibos
+                };
             }
         }
     }

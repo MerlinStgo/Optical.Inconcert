@@ -18,51 +18,67 @@ namespace Optical.Inconcert.Application
             var response = new DeudaDto();
 
             var deudas = await _repository.GetDeudas(param);
-            if (deudas.Any())
+            if (deudas != null)
             {
-                var cliente = deudas.First();
-                response.Cliente = new Cliente()
+                var datosCliente = deudas.Servicios?.FirstOrDefault();
+
+                if (datosCliente != null)
                 {
-                    CodigoAbonado = cliente.CodAbonado,
-                    Documento = cliente.DocCliente,
-                    Estado = cliente.EstadoCliente,
-                    Nombre = cliente.NombreCliente
-                };
-
-                var lsIdServicios = deudas.Select(o => o.IdContrato).Distinct();
-
-                var lsComprobante = new List<Comprobante>();
-                response.Servicios = new List<Servicio>();
-
-                foreach (var id in lsIdServicios)
-                {
-                    var servicio = deudas.First(x => x.IdContrato == id);
-                    var comprobantesServicio = deudas.Where(x => x.IdContrato == servicio.IdContrato);
-
-                    foreach (var item in comprobantesServicio)
+                    response.Cliente = new Cliente()
                     {
-                        lsComprobante.Add(new Comprobante()
+                        CodigoAbonado = datosCliente.CodAbonado,
+                        Documento = datosCliente.DocCliente,
+                        Estado = datosCliente.EstadoCliente,
+                        Nombre = datosCliente.NombreCliente
+                    };
+
+                    var lsIdServicios = deudas.Servicios.Select(o => o.IdServicio).Distinct();
+
+                    var lsComprobante = new List<Comprobante>();
+                    response.Servicios = new List<Servicio>();
+
+                    foreach (var id in lsIdServicios)
+                    {
+                        var servicio = deudas.Servicios.First(x => x.IdServicio == id);
+                        var lsRecibos = deudas.Recibos?.Where(x => x.IdServicio == servicio.IdServicio);
+
+                        if(lsRecibos != null && lsRecibos.Any())
                         {
-                            FechaEmision = item.FecEmision,
-                            FechaVencimiento = item.FecVencimiento,
-                            Importe = item.MontoDeuda,
-                            NumeroRecibo = item.NumRecibo
-                        });
+                            foreach (var item in lsRecibos)
+                            {
+                                lsComprobante.Add(new Comprobante()
+                                {
+                                    FechaEmision = item.FecEmision,
+                                    FechaVencimiento = item.FecVencimiento,
+                                    Importe = item.MontoDeuda,
+                                    NumeroRecibo = item.NumRecibo
+                                });
+                            }
+
+                            response.Servicios.Add(new Servicio
+                            {
+                                Estado = servicio.EstadoServicio,
+                                FechaInicioContrato = servicio.FecIniContrato,
+                                IdServicio = servicio.IdServicio,
+                                Comprobantes = lsComprobante
+                            });
+
+                            lsComprobante = new List<Comprobante>();
+                        }
+                        else
+                        {
+                            response.Servicios.Add(new Servicio
+                            {
+                                Estado = servicio.EstadoServicio,
+                                FechaInicioContrato = servicio.FecIniContrato,
+                                IdServicio = servicio.IdServicio,
+                                Comprobantes = new List<Comprobante>()
+                            }) ;
+                        }
                     }
-
-                    response.Servicios.Add(new Servicio
-                    {
-                        Estado = servicio.EstadoServicio,
-                        FechaInicioContrato = servicio.FecIniContrato,
-                        IdServicio = servicio.IdContrato,
-                        Comprobantes = lsComprobante
-                    });
                 }
-
             }
-
             return response;
         }
     }
 }
-;

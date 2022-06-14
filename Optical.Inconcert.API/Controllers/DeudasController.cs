@@ -19,11 +19,15 @@ namespace Optical.Inconcert.API.Controllers
             _unitOfWork = unitOfWork;
             _logger = logger;
         }
-
+        /// <summary>
+        /// Lista deudas por servicio de un cliente
+        /// </summary>
+        /// <param name="codigoCliente"></param>
+        /// <param name="documentoCliente"></param>
+        /// <returns></returns>
         [HttpGet(Name = "GetDeudaWin")]
         [Produces("application/json", Type = typeof(ResponseBase<DeudaDto>))]
         [ProducesResponseType(StatusCodes.Status200OK)]
-
         public async Task<IActionResult> GetDeudaWin(string? codigoCliente, string? documentoCliente)
         {
             var response = new ResponseBase<DeudaDto>();
