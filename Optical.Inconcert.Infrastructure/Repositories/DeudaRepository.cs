@@ -4,7 +4,6 @@ using Optical.Inconcert.Application.Interfaces;
 using Optical.Inconcert.Application.Params;
 using Optical.Inconcert.Core.Models;
 using System.Data;
-using System.Linq;
 
 namespace Optical.Inconcert.Infrastructure.Repositories
 {

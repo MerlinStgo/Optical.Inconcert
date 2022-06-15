@@ -1,14 +1,17 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Optical.Inconcert.Application.DTOs;
 using Optical.Inconcert.Application.Interfaces;
 using Optical.Inconcert.Application.Params;
 using Optical.Inconcert.Application.Wrapper;
-using Optical.Inconcert.Core.Models;
-using Optical.Inconcert.Application.DTOs;
 
 namespace Optical.Inconcert.API.Controllers
 {
+    /// <summary>
+    /// Controlador para mostrar deudas
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
+    [Produces("application/json")]
     public class DeudasController : ControllerBase
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -20,15 +23,16 @@ namespace Optical.Inconcert.API.Controllers
             _logger = logger;
         }
         /// <summary>
-        /// Lista deudas por servicio de un cliente
+        /// Lista deudas por servicio de un cliente WIN
         /// </summary>
         /// <param name="codigoCliente"></param>
         /// <param name="documentoCliente"></param>
-        /// <returns></returns>
+        /// <returns>DeudaDtoResponseBase</returns>
+        /// <response code="200">Retorna un cliente con sus servicios y comprobantes</response>
         [HttpGet(Name = "GetDeudaWin")]
         [Produces("application/json", Type = typeof(ResponseBase<DeudaDto>))]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetDeudaWin(string? codigoCliente, string? documentoCliente)
+        public async Task<ActionResult<ResponseBase<DeudaDto>>> GetDeudaWin(string? codigoCliente, string? documentoCliente)
         {
             var response = new ResponseBase<DeudaDto>();
             try

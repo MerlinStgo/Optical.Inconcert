@@ -6,6 +6,10 @@ namespace Optical.Inconcert.API.Controllers
     [ApiController]
     public class PingController : ControllerBase
     {
+        /// <summary>
+        /// Sirve para validar si el servicio está activo
+        /// </summary>
+        /// <returns></returns>
         [HttpGet(Name = "Ping")]
         public ActionResult Ping()
         {
