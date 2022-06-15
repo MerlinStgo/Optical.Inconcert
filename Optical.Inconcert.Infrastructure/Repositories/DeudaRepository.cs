@@ -18,7 +18,7 @@ namespace Optical.Inconcert.Infrastructure.Repositories
 
         public async Task<Deuda> GetDeudas(ParamDeuda param)
         {
-            var sql = "INCONCERT.LISTAR_CLIENTE_RECIBOS_POR_CLIENTE";
+            var sql = "INCONCERT.LISTAR_SERVICIO_RECIBOS_POR_CLIENTE";
 
             var p = new DynamicParameters();
             p.Add("@PEI_ID_EMPRESA", param.IdEmpresa, DbType.Int32);
